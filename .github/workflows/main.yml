@@ -16,6 +16,7 @@ jobs:
         with:
          distribution: 'temurin'
          java-version: '11'
+         cache: 'maven'
 
       # 2. دمج أوامر Maven (لتوليد كل التقارير مرة واحدة)
       - name: Build, Test, Checkstyle, and Coverage
