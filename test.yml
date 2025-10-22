@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Maven test
+        run: mvn test
+
+      - name: Maven Build
+        run: mvn install
+
+      - name: massage
+        run: echo "Build and tests completed successfully!"        
