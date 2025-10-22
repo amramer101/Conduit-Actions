@@ -26,11 +26,12 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Setup SonarQube
-        uses: kitabisa/sonarqube-action@v1.2.0
+      - name: SonarQube
+        uses: philips-software/sonar-scanner-action@v1.5.1
         with:
-            host: ${{ secrets.SONAR_URL }}
-            login: ${{ secrets.SONAR_TOKEN }}
-            projectBaseDir: "src/"
+            token: ${{ secrets.SONAR_TOKEN }}
+            projectName: My Project Name
             projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
-            projectName: "MyProject"
+            url: https://sonarcloud.io
+            organization: ${{ secrets.SONAR_ORGANIZATION }}
+            baseDir: src
