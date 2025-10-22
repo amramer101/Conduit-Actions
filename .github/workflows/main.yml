@@ -14,6 +14,9 @@ jobs:
       - name: Maven test
         run: mvn test
 
+      - name: Maven Checkstyle
+        run: mvn checkstyle:checkstyle  
+
       - name: Maven Build
         run: mvn install
 
