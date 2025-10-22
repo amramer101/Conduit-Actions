@@ -10,7 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # ضروري عشان SonarCloud يجيب تاريخ الـ commits
 
+      - name: setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          
       - name: Maven test
         run: mvn test
 
@@ -20,18 +28,16 @@ jobs:
       - name: Maven Build
         run: mvn install
 
-      - name: setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
+      # (ملاحظة: يفضل تشغيل الـ build والـ test قبل الـ scan)
 
-      - name: SonarQube
-        uses: philips-software/sonar-scanner-action@v1.5.1
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-            token: ${{ secrets.SONAR_TOKEN }}
-            projectName: My Project Name
-            projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
-            url: https://sonarcloud.io
-            organization: ${{ secrets.SONAR_ORGANIZATION }}
-            baseDir: src
+          args: >
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.projectName='My Project Name22'
+            -Dsonar.projectBaseDir=src
