@@ -17,4 +17,5 @@ jobs:
       - name: Maven Build
         run: mvn install
 
-      - name: Docker Build        
+      - name: massge step
+        run: echo "This is a custom step"
