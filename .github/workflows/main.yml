@@ -21,7 +21,7 @@ jobs:
         run: mvn clean verify checkstyle:checkstyle
 
       - name: Setup SonarQube
-        uses: warchant/setup-sonar-scanner@v8
+        uses: Warchant/setup-sonar-scanner@v9
         with:
           version: 7.2.0.5079
 
