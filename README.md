@@ -1,10 +1,10 @@
-# HProfile Actions - Complete CI/CD DevOps Project
+# Conduit - The AWS ECS CI/CD GitOps-Driven Engine 
 
 ## 👨‍💻 Author
 **Amr Amer**  
-*DevOps Engineer*
+*Cloud DevOps Engineer*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/yourprofile)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/amrmamer/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/amramer101)
 
 ---
@@ -19,6 +19,10 @@ The application is a **community forum** where DevOps practitioners can:
 - 🤝 Connect with other professionals in the DevOps community
 - 📚 Learn about continuous documentation and knowledge capture
 - 🚀 Explore real-world DevOps implementations
+
+
+![CI/CD Pipeline](images/pipeline-overview.png)
+
 
 ### Key Highlights
 - ✅ Fully automated CI/CD pipeline using GitHub Actions
@@ -64,8 +68,6 @@ The application is a **community forum** where DevOps practitioners can:
 ## 🔄 Complete CI/CD Pipeline Workflow
 
 The project implements a sophisticated **three-stage automated CI/CD pipeline** using GitHub Actions with complete deployment automation from code commit to production.
-
-![CI/CD Pipeline](images/pipeline-overview.png)
 
 ### Pipeline Triggers
 - **Manual Trigger**: `workflow_dispatch` for on-demand deployments
@@ -132,7 +134,7 @@ The project implements a sophisticated **three-stage automated CI/CD pipeline** 
 **Dependencies**: Requires `Testing_and_SonarQube` to pass  
 **Runner**: Ubuntu Latest
 
-![Build Stage](images/build-stage.png)
+![Build Stage](images/testing-stage.png)
 
 #### Steps Performed:
 
@@ -179,7 +181,7 @@ The project implements a sophisticated **three-stage automated CI/CD pipeline** 
 **Dependencies**: Requires `Build_and_push_docker_image` to pass  
 **Runner**: Ubuntu Latest
 
-![Deploy Stage](images/deploy-stage.png)
+![Deploy Stage](images/testing-stage.png)
 
 #### Steps Performed:
 
@@ -699,12 +701,12 @@ This project is open source and available for educational purposes.
 
 ## 📞 Contact & Social
 
-**Amr Amer** - DevOps Engineer
+**Amr Amer** - Cloud DevOps Engineer
 
-- 💼 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- 💼 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/amrmamer/)
 - 🐙 GitHub: [@amramer101](https://github.com/amramer101)
-- 📧 Email: your.email@example.com
-- 🌐 Portfolio: [yourwebsite.com](https://yourwebsite.com)
+- 📧 Email: amrmedhatamer1@gmail.com
+- 🌐 Portfolio: [Whoami.com](https://wh0ami.netlify.app/)
 
 ---
 
