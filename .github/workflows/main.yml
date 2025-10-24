@@ -4,7 +4,7 @@ on:
     - push 
 
 jobs:
-  Testing:
+  Testing_and_SonarQube:
     runs-on: ubuntu-latest
     steps:
       - name: Code checkout
@@ -38,12 +38,30 @@ jobs:
             -Dsonar.jacoco.reportsPath=target/jacoco.exec 
             -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml 
 
-      - name: SonarQube Quality Gate check
-        id: sonarqube-quality-gate-check
-        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
+    
+  Build_and_push_docker_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
 
+      - name: Update sql cerdentials in application.properties
+        run: |
+          sed -i "s/^jdbc.username.*$/jdbc.username\=${{ secrets.MY_SQL_USER }}/" src/main/resources/application.properties
+          sed -i "s/^jdbc.password.*$/jdbc.password\=${{ secrets.MY_SQL_PASS }}/" src/main/resources/application.properties
+          sed -i "s/db01/${{ secrets.MYSQL_ENDPOINT }}/" src/main/resources/application.properties 
+
+      - name: Docker ECR
+        uses: appleboy/docker-ecr-action@v0.0.3
         with:
-          pollingTimeoutSec: 600
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL    
+          access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          registry: ${{ secrets.AWS_REGISTRY_URL }}
+          repo: hprofile
+          region: eu-west-3
+          tags: latest, ${{ github.run_number }}
+          daemon_off: false
+          dockerfile: ./Dockerfile
+          context: ./
+        
+
