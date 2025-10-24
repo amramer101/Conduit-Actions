@@ -21,7 +21,7 @@ The application is a **community forum** where DevOps practitioners can:
 - 🚀 Explore real-world DevOps implementations
 
 
-![CI/CD Pipeline](images/pipeline-overview.png)
+![CI/CD Pipeline](images/pipeline-overview.jpg)
 
 
 ### Key Highlights
