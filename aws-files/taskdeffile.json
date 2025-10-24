@@ -1,31 +1,91 @@
 {
-  "cpu": 0,
-  "environment": [],
-  "environmentFiles": [],
-  "essential": true,
-  "image": "493789572447.dkr.ecr.eu-west-3.amazonaws.com/hprofile",
-  "logConfiguration": {
-    "logDriver": "awslogs",
-    "options": {
-      "awslogs-group": "/ecs/hprofile-task-def",
-      "awslogs-create-group": "true",
-      "awslogs-region": "eu-west-3",
-      "awslogs-stream-prefix": "ecs"
+    "compatibilities": [
+        "EC2",
+        "MANAGED_INSTANCES",
+        "FARGATE"
+    ],
+    "containerDefinitions": [
+        {
+            "cpu": 0,
+            "environment": [],
+            "environmentFiles": [],
+            "essential": true,
+            "image": "493789572447.dkr.ecr.eu-west-3.amazonaws.com/hprofile",
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/hprofile-task-def",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "eu-west-3",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "mountPoints": [],
+            "name": "hprofile",
+            "portMappings": [
+                {
+                    "appProtocol": "http",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "name": "hprofile-8080-tcp",
+                    "protocol": "tcp"
+                }
+            ],
+            "systemControls": [],
+            "ulimits": [],
+            "volumesFrom": []
+        }
+    ],
+    "cpu": "1024",
+    "enableFaultInjection": false,
+    "executionRoleArn": "arn:aws:iam::493789572447:role/ecsTaskExecutionRole",
+    "family": "hprofile-task-def",
+    "memory": "2048",
+    "networkMode": "awsvpc",
+    "placementConstraints": [],
+    "registeredAt": "2025-10-24T10:38:58.761Z",
+    "registeredBy": "arn:aws:iam::493789572447:user/Amr",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "revision": 1,
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
     },
-    "secretOptions": []
-  },
-  "mountPoints": [],
-  "name": "hprofile",
-  "portMappings": [
-    {
-      "appProtocol": "http",
-      "containerPort": 8080,
-      "hostPort": 8080,
-      "name": "hprofile-8080-tcp",
-      "protocol": "tcp"
-    }
-  ],
-  "systemControls": [],
-  "ulimits": [],
-  "volumesFrom": []
+    "status": "ACTIVE",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-3:493789572447:task-definition/hprofile-task-def:1",
+    "taskRoleArn": "arn:aws:iam::493789572447:role/ecsTaskExecutionRole",
+    "volumes": [],
+    "tags": []
 }
