@@ -41,6 +41,7 @@ jobs:
     
   Build_and_push_docker_image:
     runs-on: ubuntu-latest
+    needs: Testing_and_SonarQube
     steps:
       - name: Code checkout
         uses: actions/checkout@v4
