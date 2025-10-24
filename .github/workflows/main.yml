@@ -83,7 +83,7 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
 
-        
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -105,8 +105,8 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: my-service
-          cluster: my-cluster
+          service: ${{ env.SERVICE }}
+          cluster: ${{ env.CLUSTER }}
           wait-for-service-stability: true   
 
 
